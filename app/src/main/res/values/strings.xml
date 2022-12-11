@@ -6,10 +6,18 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_username">User</string>
     <string name="prompt_password">Password</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_phone">Phone</string>
+    <string name="prompt_email">E-mail</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="action_create_user">Create user</string>
+    <string name="action_create_success">User created successfully!</string>
+    <string name="action_create_failed">User could not be created</string>
+    <string name="action_register_failed">User data could not be registered</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="add_user">Add new user</string>
 </resources>

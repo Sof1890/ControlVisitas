@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -17,11 +18,30 @@ import com.example.controldevisitas.MainActivity
 import com.example.controldevisitas.databinding.ActivityLoginBinding
 
 import com.example.controldevisitas.R
+import com.example.controldevisitas.TAG
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var auth: FirebaseAuth
+
+    override fun onStart() {
+        super.onStart()
+
+        //Check if user is signed in.
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        } else {
+
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,10 +49,13 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        auth = Firebase.auth
+
         val username = binding.username
         val password = binding.password
         val login = binding.login
         val loading = binding.loading
+        val add = binding.createUser
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
@@ -62,9 +85,6 @@ class LoginActivity : AppCompatActivity() {
                 updateUiWithUser(loginResult.success)
             }
             setResult(Activity.RESULT_OK)
-
-            //Complete and destroy login activity once successful
-            finish()
         })
 
         username.afterTextChanged {
@@ -97,7 +117,24 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
+
+            add.setOnClickListener {
+                loading.visibility = View.VISIBLE
+                createAccount(username.text.toString(), password.text.toString())
+            }
         }
+    }
+
+    private fun createAccount(username: String, password: String) {
+        // [START create_user]
+        var intent = Intent(this, CreateUser::class.java)
+        intent.putExtra("keyUsername", username)
+        startActivity(intent)
+        // [END create_user]
+    }
+
+    private fun createNewUser(user: FirebaseUser?) {
+
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
