@@ -17,11 +17,24 @@ import com.example.controldevisitas.MainActivity
 import com.example.controldevisitas.databinding.ActivityLoginBinding
 
 import com.example.controldevisitas.R
+import com.example.controldevisitas.realmApp
+import io.realm.kotlin.Realm
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
+
+    override fun onStart() {
+        super.onStart()
+        val user = realmApp.currentUser
+        if (user != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        } else {
+
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
             setResult(Activity.RESULT_OK)
 
             //Complete and destroy login activity once successful
-            finish()
+            //finish()
         })
 
         username.afterTextChanged {
