@@ -2,9 +2,6 @@ package com.example.controldevisitas
 
 import android.app.Application
 import android.util.Log
-import io.realm.kotlin.mongodb.App
-
-lateinit var realmApp: App
 
 // global Kotlin extension that resolves to the short version
 // of the name of the current class. Used for labelling logs.
@@ -17,8 +14,8 @@ class MainApp: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        realmApp = App.create(getString(R.string.realm_app_id))
+//        realmApp = App.create(getString(R.string.realm_app_id))
 
-        Log.v(TAG(), "Initialized the Realm App configuration for: ${realmApp.configuration.appId}")
+//        Log.v(TAG(), "Initialized the Realm App configuration for: ${realmApp.configuration.appId}")
     }
 }

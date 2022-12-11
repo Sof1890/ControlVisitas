@@ -5,17 +5,7 @@ import android.widget.Toast
 import com.example.controldevisitas.TAG
 import com.example.controldevisitas.data.model.LoggedInUser
 import com.example.controldevisitas.data.model.User
-import com.example.controldevisitas.realmApp
-import io.realm.kotlin.Realm
-import io.realm.kotlin.RealmConfiguration
-import io.realm.kotlin.ext.query
-import io.realm.kotlin.mongodb.Credentials
-import io.realm.kotlin.mongodb.exceptions.ConnectionException
-import io.realm.kotlin.mongodb.exceptions.InvalidCredentialsException
-import io.realm.kotlin.query.RealmResults
-import kotlinx.coroutines.*
 import java.io.IOException
-import java.lang.Exception
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
@@ -37,6 +27,7 @@ class LoginDataSource {
             return Result.Error(IOException("Error logging in", e))
         }
          */
+        /*
         var loguser:LoggedInUser? = null
         CoroutineScope(Dispatchers.IO).launch {
             kotlin.runCatching {
@@ -73,6 +64,7 @@ class LoginDataSource {
         }
         if (loguser != null)
             return Result.Success<LoggedInUser>(loguser!!)
+         */
         return Result.Error(IOException("Error logging in"))
     }
 
