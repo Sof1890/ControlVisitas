@@ -1,4 +1,4 @@
-package com.example.controldevisitas.ui.notifications
+package com.example.controldevisitas.ui.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.controldevisitas.databinding.FragmentNotificationsBinding
+import com.example.controldevisitas.databinding.FragmentRegisterBinding
 
-class NotificationsFragment : Fragment() {
+class RegisterFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentRegisterBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +22,14 @@ class NotificationsFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-                ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        val registerViewModel =
+                ViewModelProvider(this).get(RegisterViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
+        registerViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

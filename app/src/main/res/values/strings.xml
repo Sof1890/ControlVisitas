@@ -2,7 +2,7 @@
     <string name="app_name">Control De Visitas</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_register">Register</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_username">User</string>
     <string name="prompt_password">Password</string>
@@ -11,6 +11,7 @@
     <string name="prompt_email">E-mail</string>
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_out">Sign out</string>
     <string name="action_create_user">Create user</string>
     <string name="action_create_success">User created successfully!</string>
     <string name="action_create_failed">User could not be created</string>
@@ -20,4 +21,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="add_user">Add new user</string>
+    <string name="title_control">Control</string>
+    <string name="title_of">of</string>
+    <string name="title_visits">Visits</string>
+    <string name="register_visitor">Register a visitor</string>
+    <string name="query_for_visits">Query for visits</string>
 </resources>
