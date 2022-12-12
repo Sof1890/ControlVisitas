@@ -11,12 +11,135 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblFloor2" />
+
+    <TextView
+        android:id="@+id/lblDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/lbl_date"
+        app:layout_constraintBottom_toTopOf="@id/lblFrom"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/lblFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/lbl_from"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/lblTo"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblFrom2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        tools:text="@string/loremipsum"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/lblTo2"
+        app:layout_constraintStart_toEndOf="@+id/lblDate"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/lbl_to"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblFrom"
+        app:layout_constraintBottom_toTopOf="@id/lblVisitor" />
+
+    <TextView
+        android:id="@+id/lblTo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@string/loremipsum"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/lblTo"
+        app:layout_constraintTop_toBottomOf="@id/lblFrom"
+        app:layout_constraintBottom_toTopOf="@id/lblVisitor2"/>
+
+    <TextView
+        android:id="@+id/lblVisitor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/lbl_visitor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/lblUser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lblTo" />
+
+    <TextView
+        android:id="@+id/lblVisitor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="@string/loremipsum"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/lblUser2"
+        app:layout_constraintStart_toEndOf="@id/lblVisitor"
+        app:layout_constraintTop_toBottomOf="@+id/lblTo2" />
+
+    <TextView
+        android:id="@+id/lblUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/prompt_username"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lblFloor"
+        app:layout_constraintTop_toBottomOf="@id/lblVisitor" />
+
+    <TextView
+        android:id="@+id/lblUser2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/loremipsum"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/lblFloor"
+        app:layout_constraintStart_toEndOf="@id/lblUser"
+        app:layout_constraintTop_toBottomOf="@id/lblVisitor" />
+
+    <TextView
+        android:id="@+id/lblFloor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/str_floor"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/text_dashboard"
+        app:layout_constraintTop_toBottomOf="@id/lblUser" />
+
+    <TextView
+        android:id="@+id/lblFloor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/lblFloor"
+        app:layout_constraintTop_toBottomOf="@id/lblUser2"
+        app:layout_constraintBottom_toTopOf="@id/text_dashboard"
+        tools:text="@string/loremipsum" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,4 +33,9 @@
     <string name="prompt_date">Date</string>
     <string name="prompt_time">Time</string>
     <string name="action_register_success">Visitor register updated successfully</string>
+    <string name="loremipsum">Lorem Ipsum Dolor Sit Amet</string>
+    <string name="lbl_date">Date of visit</string>
+    <string name="lbl_to">To</string>
+    <string name="lbl_from">From</string>
+    <string name="lbl_visitor">Visitor</string>
 </resources>
