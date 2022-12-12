@@ -9,7 +9,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -17,10 +16,7 @@ import android.widget.Toast
 import com.example.controldevisitas.MainActivity
 import com.example.controldevisitas.databinding.ActivityLoginBinding
 
-import com.example.controldevisitas.R
-import com.example.controldevisitas.TAG
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -38,8 +34,6 @@ class LoginActivity : AppCompatActivity() {
         if (currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        } else {
-
         }
     }
 
@@ -82,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
                 showLoginFailed(loginResult.error)
             }
             if (loginResult.success != null) {
-                updateUiWithUser(loginResult.success)
+                updateUiWithUser()
             }
             setResult(Activity.RESULT_OK)
         })
@@ -120,34 +114,22 @@ class LoginActivity : AppCompatActivity() {
 
             add.setOnClickListener {
                 loading.visibility = View.VISIBLE
-                createAccount(username.text.toString(), password.text.toString())
+                createAccount(username.text.toString())
             }
         }
     }
 
-    private fun createAccount(username: String, password: String) {
+    private fun createAccount(username: String) {
         // [START create_user]
-        var intent = Intent(this, CreateUser::class.java)
+        val intent = Intent(this, CreateUser::class.java)
         intent.putExtra("keyUsername", username)
         startActivity(intent)
         // [END create_user]
     }
 
-    private fun createNewUser(user: FirebaseUser?) {
-
-    }
-
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
+    private fun updateUiWithUser() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        //TODO: Remove or Update Toast
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {

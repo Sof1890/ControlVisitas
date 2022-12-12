@@ -38,20 +38,17 @@ class CreateUser : AppCompatActivity() {
         super.onStart()
     }
 
-    public fun myOnClick(view: View) {
-        Log.d(TAG(), "CREATE USER CLICK. PRE 2")
+    fun myOnClick(view: View) {
         val username = binding.username.text.toString()
         val name = binding.name.text.toString()
         val password = binding.password.text.toString()
         val phone = binding.phone.text.toString()
         val email = binding.email.text.toString()
-        var newUser: User = User(username, name, phone, email)
+        val newUser = User(username, name, phone, email)
         createUserClick(email, password, newUser)
     }
 
     private fun createUserClick(email: String, password: String, newUser: User) {
-        Log.d(TAG(), "CREATE USER CLICK ${email}, ${password}")
-        if (email == "" || password == "") { return }
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -60,7 +57,7 @@ class CreateUser : AppCompatActivity() {
                     if (currentUser != null) {
                         //createNewUser(user)
                         newUser.id = currentUser.uid
-                        db.child(newUser.username).setValue(newUser).addOnSuccessListener {
+                        db.child(currentUser.uid).setValue(newUser).addOnSuccessListener {
                             binding.username.text.clear()
                             binding.password.text.clear()
                             binding.email.text.clear()
