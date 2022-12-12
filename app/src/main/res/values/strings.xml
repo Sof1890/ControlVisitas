@@ -26,4 +26,10 @@
     <string name="title_visits">Visits</string>
     <string name="register_visitor">Register a visitor</string>
     <string name="query_for_visits">Query for visits</string>
+    <string name="visitor_name">Visitor name</string>
+    <string name="str_floor">Floor</string>
+    <string name="require_parking">Require parking slot</string>
+    <string name="purpose_of_visit">Purpose of visit</string>
+    <string name="prompt_date">Date</string>
+    <string name="prompt_time">Time</string>
 </resources>
