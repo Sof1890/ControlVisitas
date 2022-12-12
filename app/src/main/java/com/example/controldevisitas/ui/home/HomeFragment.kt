@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.controldevisitas.MainActivity
@@ -36,12 +37,12 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        /*
-        val textControl: TextView = binding.textControl
+
+        val textUserName: TextView = binding.txtUserName
         homeViewModel.text.observe(viewLifecycleOwner) {
-            textControl.text = it
+            textUserName.text = it
         }
-         */
+        //homeViewModel.getUsername().observe(this, Observer { textUserName.text })
 
         val btnLogOut: Button = binding.btnLogOut
         btnLogOut.setOnClickListener {
@@ -72,7 +73,7 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    fun onBtnLogOutClick() {
+    private fun onBtnLogOutClick() {
         FirebaseAuth.getInstance().signOut()
         startActivity(Intent(this.context, LoginActivity::class.java))
     }
