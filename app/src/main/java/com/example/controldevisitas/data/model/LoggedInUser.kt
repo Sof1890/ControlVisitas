@@ -5,6 +5,5 @@ package com.example.controldevisitas.data.model
  */
 data class LoggedInUser(
     val userId: String,
-    val displayName: String,
-    val exMessage: String
+    val displayName: String
 )

@@ -51,7 +51,7 @@ class CreateUser : AppCompatActivity() {
 
     private fun createUserClick(email: String, password: String, newUser: User) {
         Log.d(TAG(), "CREATE USER CLICK ${email}, ${password}")
-        if (email == "" || password == "") { return }
+        //if (email == "" || password == "") { return }
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -60,7 +60,7 @@ class CreateUser : AppCompatActivity() {
                     if (currentUser != null) {
                         //createNewUser(user)
                         newUser.id = currentUser.uid
-                        db.child(newUser.username).setValue(newUser).addOnSuccessListener {
+                        db.child(currentUser.uid).setValue(newUser).addOnSuccessListener {
                             binding.username.text.clear()
                             binding.password.text.clear()
                             binding.email.text.clear()

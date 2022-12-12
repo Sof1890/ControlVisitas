@@ -1,18 +1,19 @@
 package com.example.controldevisitas.data
 
 import android.util.Log
-import android.widget.Toast
 import com.example.controldevisitas.TAG
 import com.example.controldevisitas.data.model.LoggedInUser
-import com.example.controldevisitas.data.model.User
-import java.io.IOException
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.tasks.await
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 class LoginDataSource {
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
+    private var result:Result<LoggedInUser>? = null
+
+    suspend fun login(username: String, password: String): Result<LoggedInUser> {
         /*
         try {
             val config = RealmConfiguration.Builder(schema = setOf(User::class)).build()
@@ -65,15 +66,72 @@ class LoginDataSource {
         if (loguser != null)
             return Result.Success<LoggedInUser>(loguser!!)
          */
-        return Result.Error(IOException("Error logging in"))
-    }
 
-    private fun displayErrorMessage(errorMsg: String) {
-        Log.e(TAG(), errorMsg)
-        //Toast.makeText(, errorMsg, Toast.LENGTH_LONG).show()
+        /*
+        return withContext(Dispatchers.IO) {
+            try {
+                val regResult = FirebaseAuth.getInstance().signInWithEmailAndPassword(username,password).await()
+                val userId = regResult.user?.uid!!
+                val newUser = LoggedInUser(userId, username, "")
+                Result.Success(newUser)
+            } catch (e: Exception) {
+                Result.Error(e)
+            }
+        }
+         */
+
+
+/*
+
+        Log.v(TAG(), "Logging in. ${username},${password}")
+        var loggedUser = LoggedInUser("","","Empty User")
+
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(username, password)
+            .addOnCompleteListener() { task ->
+                if (task.isSuccessful) {
+                    Log.v(TAG(), "user logged in")
+                    loggedUser = LoggedInUser(FirebaseAuth.getInstance().currentUser!!.uid.toString(), username,"")
+                } else {
+                    Log.w(TAG(), "signIn failed. ${task.exception}")
+                    loggedUser = LoggedInUser("","",task.exception.toString())
+                }
+            }
+
+        if (loggedUser.exMessage == "") {
+            Log.v(TAG(), "Returning user. ${loggedUser.userId}:${loggedUser.displayName}")
+            return Result.Success<LoggedInUser>(loggedUser)
+        }
+
+        Log.w(TAG(), "Returning error. ${loggedUser.exMessage}")
+
+
+ */
+        Log.d(TAG(), "Trying to login. $username")
+        result = try {
+            val regResult = FirebaseAuth.getInstance().signInWithEmailAndPassword(username,password).await()
+            val userId = regResult.user?.uid!!
+            val newUser = LoggedInUser(userId, username)
+            Result.Success(newUser)
+        } catch (e: Exception) {
+            if (FirebaseAuth.getInstance().currentUser != null) {
+                logout()
+            }
+            Log.e(TAG(),"${e.message}")
+            Result.Error(e)
+        }
+
+        val returnResult = result
+        result = null
+
+        //return Result.Error(IOException("Error logging in"))
+        return returnResult!!
     }
 
     fun logout() {
-        // TODO: revoke authentication
+        try {
+            FirebaseAuth.getInstance().signOut()
+        } catch (e: Exception) {
+            Log.e(TAG(), "Could not logout. ${e.message}")
+        }
     }
 }

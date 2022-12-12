@@ -38,8 +38,6 @@ class LoginActivity : AppCompatActivity() {
         if (currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-        } else {
-
         }
     }
 
@@ -142,12 +140,6 @@ class LoginActivity : AppCompatActivity() {
         val displayName = model.displayName
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-        //TODO: Remove or Update Toast
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
