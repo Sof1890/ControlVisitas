@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "721012001368",
+    "project_id": "controlvisitas-8c054",
+    "storage_bucket": "controlvisitas-8c054.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:721012001368:android:aff2f09bd75b27bf71d82d",
+        "android_client_info": {
+          "package_name": "com.example.controldevisitas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "721012001368-f057c37sqpugq31vq59qrev4g6cs1p5g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.controldevisitas",
+            "certificate_hash": "2799c60a3d0efdad3d65fa35e5d22b8448b15ea6"
+          }
+        },
+        {
+          "client_id": "721012001368-pjs9l7629fj2nnd790n1hm64i0i4931h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUb02aIOrfp2xvIxthBrdtvKcDzuQq1yE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "721012001368-pjs9l7629fj2nnd790n1hm64i0i4931h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
