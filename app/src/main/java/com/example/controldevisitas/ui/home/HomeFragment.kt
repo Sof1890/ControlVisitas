@@ -42,7 +42,6 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textUserName.text = it
         }
-        //homeViewModel.getUsername().observe(this, Observer { textUserName.text })
 
         val btnLogOut: Button = binding.btnLogOut
         btnLogOut.setOnClickListener {

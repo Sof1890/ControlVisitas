@@ -32,4 +32,5 @@
     <string name="purpose_of_visit">Purpose of visit</string>
     <string name="prompt_date">Date</string>
     <string name="prompt_time">Time</string>
+    <string name="action_register_success">Visitor register updated successfully</string>
 </resources>
