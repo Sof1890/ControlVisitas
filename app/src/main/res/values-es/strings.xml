@@ -38,4 +38,5 @@
     <string name="lbl_to">De</string>
     <string name="lbl_from">A</string>
     <string name="lbl_visitor">Visitante</string>
+    <string name="lbl_no_visitor_registered">No existe visita registrada</string>
 </resources>

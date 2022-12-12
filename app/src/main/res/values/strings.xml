@@ -38,4 +38,5 @@
     <string name="lbl_to">To</string>
     <string name="lbl_from">From</string>
     <string name="lbl_visitor">Visitor</string>
+    <string name="lbl_no_visitor_registered">No Visitor registered</string>
 </resources>

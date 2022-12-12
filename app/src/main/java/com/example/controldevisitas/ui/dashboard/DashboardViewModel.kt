@@ -13,21 +13,21 @@ import com.google.firebase.database.ValueEventListener
 
 class DashboardViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
+    private val _hasData = MutableLiveData<Boolean>().apply {
         val uid = FirebaseAuth.getInstance().uid
         FirebaseDatabase.getInstance()
             .getReference("Registers/$uid")
             .addValueEventListener(object: ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {
                     Log.w(TAG(), "loadUser:cancelled", error.toException())
-                    postValue("No Visitor registered")
+                    postValue(false)
                 }
 
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if(snapshot.exists()) {
-                        postValue("")
+                        postValue(true)
                     } else {
-                        postValue("No Visitor registered")
+                        postValue(false)
                     }
                 }
             })
@@ -127,7 +127,7 @@ class DashboardViewModel : ViewModel() {
             })
     }
 
-    val text: LiveData<String> = _text
+    val hasData: LiveData<Boolean> = _hasData
     val username: LiveData<String> = _username
     val time: LiveData<String> = _time
     val date: LiveData<Long> = _date

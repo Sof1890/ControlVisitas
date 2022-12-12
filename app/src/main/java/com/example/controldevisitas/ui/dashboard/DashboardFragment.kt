@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.controldevisitas.R
 import com.example.controldevisitas.databinding.FragmentDashboardBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,8 +35,8 @@ class DashboardFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        dashboardViewModel.hasData.observe(viewLifecycleOwner) {
+            textView.text = if (it) "" else getString(R.string.lbl_no_visitor_registered)
         }
 
         val lblUsername:TextView = binding.lblUser2
